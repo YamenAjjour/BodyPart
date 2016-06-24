@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         controller = new Controller(this);
-        Bitmap query = BitmapFactory.decodeResource(getResources(), R.drawable.query);
+        Bitmap query = BitmapFactory.decodeResource(getResources(), R.drawable.query3);
         User user = controller.scan(query);
         Toast.makeText(this, (String)user.getName(),Toast.LENGTH_LONG).show();
     }
