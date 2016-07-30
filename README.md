@@ -66,14 +66,25 @@ If you don't want to build your own kernel and coincidentally have a Nexus 5 wit
 ### Downloading the kernel
 
 1. Clone the kernel and switch to the right branch/commit:
-	- The Nexus 5 device name is **hammerhead**, it's kernel is located in the **msm** repo:
+	- The Nexus 5 dev device name is **hammerhead**, it's kernel is located in the **msm** repo:
 	`git clone https://android.googlesource.com/kernel/msm.git`
-	- Although you will download quite some data, the folder will empty, that's because you need to switch to the right branch first:
-	- **TODO**
+
+Although you will download quite some data, the folder will empty, that's because you need to switch to the right branch first.
+
+#### Finding the right commit
+The kernel version of your phone will look something like 3.10.40-g88882d2, what you care about is the last hash of that string after g: 3.10.40-g**88882d2**
+
+With that hash you can checkout the branch for your device like this:
+`git checkout -b my_current_kernel_branch 88882d2`
+
 
 ### Manipulating the kernel
 
-What we are interested in is the xxx which we simply replace by the version we can find here: [touch_synaptics_ds5.c](https://raw.githubusercontent.com/isaaczinda/RainCheck/master/Kernel/touch_synaptics_ds5.c)
+What we are interested in is the touch_synaptics_ds5.c which is located in *drivers/input/touchscreen*. We simply replace it by the version we can find here: [touch_synaptics_ds5.c](https://raw.githubusercontent.com/isaaczinda/RainCheck/master/Kernel/touch_synaptics_ds5.c)
+
+If you are interested what this is actually doing, you can check out this site:
+[Getting the Phone's Capacitance Values](https://ubicomplab.cs.washington.edu/raincheck/capacitance-values.html)
+
 
 ### Compiling
 
@@ -117,21 +128,29 @@ Assuming your device is connected over USB, debug mode is on and permissions are
 
 1. reboot into bootloader:
 
+```
 	adb reboot bootloader
+```
 
 2. boot with new boot.img
 
+```
 	fastboot boot new_boot.img
+```
 
 3. get device ip in network
 
+```
 	adb shell ip -f inet addr show wlan0
+```
 
-	-> inet __10.0.1.8__/24 brd 10.0.1.255 scope global wlan0
+-> inet __10.0.1.8__/24 brd 10.0.1.255 scope global wlan0
 
 4. run adb over port
 
+```
 	adb tcpip 5555
+```
 
 5. connect over wifi
 
