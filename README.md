@@ -12,7 +12,7 @@ The offical but not so helpful tutorial can be found here:
 
 - [Building Kernels](http://source.android.com/source/building-kernels.html)
 
-If you don't want to build your own kernel and coincidentally have a Nexus 5 with kernel version XXX you can jump ahead to "Booting the kernel" using the boot.img that is provided in this repo.
+If you don't want to build your own kernel and coincidentally have a Nexus 5 with kernel version **3.4.0-g6a99a02** you can jump ahead to "Booting the kernel" using the boot.img that is provided in this repo.
 
 ## What you need
 
