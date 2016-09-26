@@ -80,11 +80,27 @@ With that hash you can checkout the branch for your device like this:
 
 ### Manipulating the kernel
 
-What we are interested in is the touch_synaptics_ds5.c which is located in *drivers/input/touchscreen*. We simply replace it by the version we can find here: [touch_synaptics_ds5.c](https://raw.githubusercontent.com/isaaczinda/RainCheck/master/Kernel/touch_synaptics_ds5.c)
+What we are interested in is the touch_synaptics_ds5.c which is located in:
+
+*drivers/input/touchscreen*
+
+You can simply replace it by the version you can find here: 
+[RainCheck touch_synaptics_ds5.c](https://raw.githubusercontent.com/isaaczinda/RainCheck/master/Kernel/touch_synaptics_ds5.c)
+or the version that we manipulated: 
+[Our touch_synaptics_ds5.c](https://raw.githubusercontent.com/YamenAjjour/BodyPart/master/kernel-hack/touch_synaptics_ds5.c)
 
 If you are interested what this is actually doing, you can check out this site:
 [Getting the Phone's Capacitance Values](https://ubicomplab.cs.washington.edu/raincheck/capacitance-values.html)
 
+### What impact do the different files have?
+
+The new kernel will write the raw capacitance values into a proc file, which can be read by an app if it has super user privileges.
+
+The problem is that the frequency rate which is needed is too high to save the event and propagate at the same time.
+
+The RainCheck touch_synaptics_ds5.c file aborts the method call, after the touch event has been saved, early so that the touch event won't be propegiated anymore. This of course makes the touchscreen unusable.
+
+We modified this version in such way that we decreased the frequency rate and allowed the event to be processed, which makes the touchscreen work partially.
 
 ### Compiling
 
