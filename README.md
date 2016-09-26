@@ -175,3 +175,26 @@ Assuming your device is connected over USB, debug mode is on and permissions are
 You can now disconnect your device from the computer, connect a mouse over the OTB cable and use the device with the mouse while debugging.
 
 ## How the app works
+
+The application's main goal is to recognize the ear of the user by:
+
+1. Reading the raw capacitance values from the proc files 
+2. Creating a gray image from the read values
+3. Identifying the user by using pre stored samples of users' ear images
+
+The application has two basic functionality: 
+
+1. Adding a user with a scanned ear image to the moc database
+2. Recognizing the user given a user's ear query image 
+
+
+User identification
+
+We modeled each user with only one ear image and used BRISK (Binary Robust Invariant Scalable Keypoints, OpenCV) Algorithm for extracting key feature points. 
+
+Given a user's ear query image do the following: 
+
+1. Extract the image's key feature points's descriptors using BRISK algorithm 
+2. Calculate for each user ear image in the moc database the best matched descriptors to the query image's descriptors 
+3. Identify the query image's user as the user with smallest average similarity accross all best matched descriptors. 
+
