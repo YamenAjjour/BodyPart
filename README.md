@@ -12,7 +12,9 @@ The offical but not so helpful tutorial can be found here:
 
 - [Building Kernels](http://source.android.com/source/building-kernels.html)
 
-If you don't want to build your own kernel and coincidentally have a Nexus 5 with kernel version **3.4.0-g6a99a02** you can jump ahead to "Booting the kernel" using the boot.img that is provided in this repo.
+If you don't want to build your own kernel and coincidentally have a Nexus 5 with kernel version **3.4.0-g6a99a02** you can jump ahead to "Booting the kernel" using the boot.img that is provided in this repo:
+
+[Manipulated Boot Image](https://github.com/YamenAjjour/BodyPart/blob/master/kernel-hack/new_boot.img)
 
 ## What you need
 
@@ -194,7 +196,6 @@ We modeled each user with only one ear image and used BRISK (Binary Robust Invar
 
 Given a user's ear query image do the following: 
 
-1. Extract the image's key feature points's descriptors using BRISK algorithm 
-2. Calculate for each user ear image in the moc database the best matched descriptors to the query image's descriptors 
+1. Extract the image's key feature points's descriptors using BRISK algorithm. 
+2. Calculate for each user ear image in the moc database the best matched descriptors to the query image's descriptors. 
 3. Identify the query image's user as the user with smallest average similarity accross all best matched descriptors. 
-
